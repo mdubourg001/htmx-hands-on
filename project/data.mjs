@@ -38,4 +38,6 @@ export async function deleteTodo(id) {
   todos.splice(index, 1);
 
   fs.writeFileSync("todos.json", JSON.stringify(todos, null, 2));
+
+  return Promise.resolve(todos);
 }
