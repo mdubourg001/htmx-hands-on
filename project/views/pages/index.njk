@@ -1,0 +1,24 @@
+{% from "../components/molecules/header.njk" import Header %}
+{% from "../components/molecules/todolist.njk" import TodoList %}
+{% from "../components/molecules/todoform.njk" import TodoForm %}
+
+<html>
+  <head>
+    <title>HTMX Hands-On</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+    <script src="https://unpkg.com/htmx-ext-response-targets@2.0.3"></script>
+
+    {# would not be imported like this in a production project #}
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="container mx-auto text-center" hx-ext="response-targets">
+    {{ Header() }}
+    {{ TodoList(todos) }}
+    {{ TodoForm() }}
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{% from "./todo.njk" import Todo %}
+
+{% macro TodoList(todos) %}
+  <div id="todos" class="flex flex-col gap-4">
+    <ul class="mx-auto flex flex-col gap-y-3">
+      {% for todo in todos %}
+        {{ Todo(todo) }}
+      {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}
+
+{{ TodoList(todos) }}

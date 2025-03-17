@@ -1,0 +1,32 @@
+{% macro Todo(todo, attributes={}) %}
+  <li 
+    id="todo-{{ todo.id }}" 
+    class="flex items-center gap-x-3"
+    {% for attr in attributes | dictsort %}
+      {{ attr[0] }}="{{ attr[1] }}"
+    {% endfor %}
+  >
+    <input 
+      type="checkbox" 
+      name="done" 
+      {% if todo.done %}checked{% endif %} 
+      hx-post="/todos/{{ todo.id }}" 
+      hx-target="#todos" 
+      hx-swap="outerHTML" 
+    />
+
+    <span class="{% if todo.done %}line-through{% endif %}">
+      {{ todo.title }}
+    </span>
+
+    <button
+      hx-delete="/todos/{{ todo.id }}" 
+      hx-target="#todo-{{ todo.id }}" 
+      hx-swap="delete" 
+    >
+      🞨
+    </button>
+  </li>
+{% endmacro %}
+
+{{ Todo(todo) }}

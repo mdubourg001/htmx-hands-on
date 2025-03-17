@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "title": "Groceries",
+    "done": true
+  },
+  {
+    "id": "2",
+    "title": "Wash dishes",
+    "done": false
+  },
+  {
+    "id": "3",
+    "title": "Water plants",
+    "done": true
+  },
+  {
+    "id": "4",
+    "title": "Plan vacation",
+    "done": false
+  },
+  {
+    "id": "5",
+    "title": "Visit parents",
+    "done": true
+  },
+  {
+    "id": "6",
+    "title": "Write blog post",
+    "done": true
+  },
+  {
+    "id": "7",
+    "title": "Prepare presentation",
+    "done": false
+  },
+  {
+    "id": "8",
+    "title": "Call the bank",
+    "done": false
+  },
+  {
+    "id": "10",
+    "title": "Meet with the team",
+    "done": true
+  }
+]
