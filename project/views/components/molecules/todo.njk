@@ -7,13 +7,20 @@
       type="checkbox" 
       name="done" 
       {% if todo.done %}checked{% endif %} 
+      hx-post="/todos/{{ todo.id }}" 
+      hx-target="#todos" 
+      hx-swap="outerHTML" 
     />
 
     <span class="{% if todo.done %}line-through{% endif %}">
       {{ todo.title }}
     </span>
 
-    <button>
+    <button
+      hx-delete="/todos/{{ todo.id }}" 
+      hx-target="#todo-{{ todo.id }}" 
+      hx-swap="delete" 
+    >
       🞨
     </button>
   </li>
