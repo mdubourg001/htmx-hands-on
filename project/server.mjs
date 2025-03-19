@@ -18,6 +18,20 @@ nunjucks.configure("views", {
   noCache: true,
 });
 
+// ----- subscribers -----
+
+const clients = new Set();
+
+function notifyClients(todos) {
+  const renderedTodos = nunjucks
+    .render("components/molecules/todolist.njk", { todos })
+    .replace(/(\r\n|\n|\r)/gm, "");
+
+  for (const client of clients) {
+    client.write(`data: ${renderedTodos}\n\n`);
+  }
+}
+
 // ----- routes -----
 
 // List todos
@@ -31,9 +45,9 @@ app.get("/", async (req, res) => {
 app.post("/todos", async (req, res) => {
   const todos = await addTodo(req.body.title);
 
-  res.render("components/molecules/todolist.njk", {
-    todos,
-  });
+  notifyClients(todos);
+
+  res.status(201).send();
 });
 
 // Toggle todo
@@ -43,7 +57,8 @@ app.post("/todos/:id", async (req, res) => {
   try {
     const todos = await toggleTodo(id);
 
-    res.render("components/molecules/todolist.njk", { todos });
+    notifyClients(todos);
+    res.status(204).send();
   } catch (error) {
     res.status(404).send();
   }
@@ -54,12 +69,30 @@ app.delete("/todos/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    await deleteTodo(id);
+    const todos = await deleteTodo(id);
+    notifyClients(todos);
 
-    res.status(200).send();
+    res.status(204).send();
   } catch (error) {
     res.status(404).send();
   }
+});
+
+// Server-sent events
+app.get("/live", (req, res) => {
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+
+  clients.add(res);
+
+  res.on("close", () => {
+    console.log("Client closed connection.");
+
+    clients.delete(res);
+    res.end();
+  });
 });
 
 app.listen(port, () => {
