@@ -1,16 +1,7 @@
 {% macro TodoForm() %}
-  <form
-    class="mt-6"
-    hx-post="/todos" 
-    hx-target="#todo-form-error"
-    hx-target-400="#todo-form-error"
-    hx-swap="outerHTML" 
-    hx-on::after-request="this.reset()"
-  >
-    <input type="text" name="title" placeholder="Add a new todo" />
+  <form class="mt-6">
+    <input type="text" name="title" placeholder="Add a new todo" required />
     <button type="submit">Add</button>
-
-    <div id="todo-form-error"></div>
   </form>
 {% endmacro %}
 
