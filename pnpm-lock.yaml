@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ekino/slidev-theme-ekino':
-        specifier: ^0.0.3
-        version: 0.0.3(@nuxt/kit@3.16.0)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(rollup@4.35.0)(typescript@5.8.2)(vite@6.2.1(@types/node@18.19.80)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
+        specifier: ^0.0.4
+        version: 0.0.4(@nuxt/kit@3.16.0)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(rollup@4.35.0)(typescript@5.8.2)(vite@6.2.1(@types/node@18.19.80)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
       '@slidev/cli':
         specifier: ^51.3.0
         version: 51.3.0(@babel/parser@7.26.9)(@nuxt/kit@3.16.0)(@types/markdown-it@14.1.2)(@types/node@18.19.80)(@vue/compiler-sfc@3.5.13)(markdown-it-async@2.2.0)(postcss@8.5.3)(tsx@4.19.3)
@@ -183,8 +183,8 @@ packages:
   '@drauu/core@0.4.3':
     resolution: {integrity: sha512-MmFKN0DEIS+78wtfag7DiQDuE7eSpHRt4tYh0m8bEUnxbH1v2pieQ6Ir+1WZ3Xxkkf5L5tmDfeYQtCSwUz1Hyg==}
 
-  '@ekino/slidev-theme-ekino@0.0.3':
-    resolution: {integrity: sha1-nC4j7aFDYDUN66efPQCX9u0Rm/k=, tarball: https://gitlab.ekino.com/api/v4/projects/8188/packages/npm/@ekino/slidev-theme-ekino/-/@ekino/slidev-theme-ekino-0.0.3.tgz}
+  '@ekino/slidev-theme-ekino@0.0.4':
+    resolution: {integrity: sha1-NjlhG8+5w+TqG6ggas3ap/0rocM=, tarball: https://gitlab.ekino.com/api/v4/projects/8188/packages/npm/@ekino/slidev-theme-ekino/-/@ekino/slidev-theme-ekino-0.0.4.tgz}
     engines: {node: '>=18.0.0'}
 
   '@esbuild/aix-ppc64@0.25.1':
@@ -3242,7 +3242,7 @@ snapshots:
 
   '@drauu/core@0.4.3': {}
 
-  '@ekino/slidev-theme-ekino@0.0.3(@nuxt/kit@3.16.0)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(rollup@4.35.0)(typescript@5.8.2)(vite@6.2.1(@types/node@18.19.80)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))':
+  '@ekino/slidev-theme-ekino@0.0.4(@nuxt/kit@3.16.0)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(rollup@4.35.0)(typescript@5.8.2)(vite@6.2.1(@types/node@18.19.80)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))':
     dependencies:
       '@slidev/types': 0.51.0-beta.4(@nuxt/kit@3.16.0)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(rollup@4.35.0)(typescript@5.8.2)(vite@6.2.1(@types/node@18.19.80)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
     transitivePeerDependencies:

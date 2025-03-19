@@ -8,7 +8,7 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "@ekino/slidev-theme-ekino": "^0.0.3",
+    "@ekino/slidev-theme-ekino": "^0.0.4",
     "@slidev/cli": "^51.3.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",

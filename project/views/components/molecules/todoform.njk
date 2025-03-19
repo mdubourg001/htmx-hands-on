@@ -1,9 +1,8 @@
 {% macro TodoForm() %}
   <form
     class="mt-6"
-    hx-ext="response-targets"
     hx-post="/todos" 
-    hx-target="#todos"
+    hx-target="#todo-form-error"
     hx-target-400="#todo-form-error"
     hx-swap="outerHTML" 
     hx-on::after-request="this.reset()"
