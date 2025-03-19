@@ -222,7 +222,7 @@ layout: title
 
 ---
 
-# Hands-on
+# Hands-on : Todolist
 
 ```bash
 git clone git@github.com:mdubourg001/htmx-hands-on.git

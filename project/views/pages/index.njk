@@ -10,14 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://unpkg.com/htmx.org@2.0.3"></script>
-    <script src="https://unpkg.com/htmx-ext-response-targets@2.0.3"></script>
     <script src="https://unpkg.com/htmx-ext-sse@2.2.2"></script>
 
     {# would not be imported like this in a production project #}
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   </head>
 
-  <body class="container mx-auto text-center" hx-ext="sse,response-targets">
+  <body class="container mx-auto text-center" hx-ext="sse">
     {{ Header() }}
     {{ TodoList(todos) }}
     {{ TodoForm() }}
