@@ -1,11 +1,12 @@
 ---
 theme: "@ekino/slidev-theme-ekino"
+transition: "none"
 title: HTMX - Hands-on
 ---
 
 # HTMX - Hands-on
 
-Philosophie, prise en main, avantages et inconvénients...
+Philosophie, prise en main, implications...
 
 <small>_Inspiré du [talk "HTMX" à BDX I/O 2024 par Stéphane Trebel](https://www.youtube.com/watch?v=szSXNi77VLo)_</small>
 
@@ -228,7 +229,7 @@ layout: title
 git clone git@github.com:mdubourg001/htmx-hands-on.git
 
 cd project/
-nvm install 22 # optionnel
+nvm install 22
 pnpm install
 ```
 
@@ -243,7 +244,90 @@ pnpm dev
 
 <br />
 
-## Objectif : 
+<div class="flex flex-col justify-center text-center mt-16">
+
+## **Objectif : Ajouter les attributs HTMX nécessaires à l'ajout d'une tâche dans la todolist**
+
+_Bonus : Vider le champ une fois la tâche ajoutée._
+
+_Indice : Voir le fichier `server.mjs`, `/todos`_
+
+</div>
+
+---
+
+# Hands-on / étape 2
+
+```bash
+git switch step-2
+pnpm dev
+```
+
+<br />
+
+<div class="flex flex-col justify-center text-center mt-16">
+
+## **Objectif : Ajouter les attributs HTMX nécessaires au changement de statut et à la suppression d'une tâche**
+
+_Indice : Voir le fichier `server.mjs`, POST/DELETE `/todos/:id`_
+
+</div>
+
+---
+
+# Hands-on / étape 3
+
+```bash
+git switch step-3
+pnpm dev
+```
+
+<br />
+
+<div class="flex flex-col justify-center text-center mt-16">
+
+## **Objectif : Ajouter les attributs HTMX nécessaires à l'utilisation du SSE pour la mise à jour de la todolist**
+
+_Indice : Voir le fichier `server.mjs`, `/live`_
+
+_Indice : [htmx Server Sent Event (SSE) Extension](https://htmx.org/extensions/sse/)_
+
+</div>
+
+---
+
+# Hands-on / étape 4
+
+```bash
+git switch final-version
+pnpm dev
+```
+
+<br />
+
+<div class="flex flex-col justify-center text-center mt-16">
+
+## **Objectif bonus : Réaliser la validation du champ d'ajout de tâche côté serveur**
+
+_Indice : [htmx Out of Band Swaps](https://htmx.org/docs/#oob_swaps)_
+
+</div>
+
+---
+
+# Observations, implications, conclusion
+
+<v-clicks>
+
+- Implique une **collaboration étroite entre le "Frontend" et le "Backend"**
+- Implique le choix d'un langage de templating côté serveur : **DX différente en fonction du langage applicatif**
+- N'est pas une alternative à React mais **une autre manière de concevoir des applications web**
+- **Pourra (et devra) être enrichi par du JavaScript** sur les parties nécessitant une forte interactivité (Vanilla, Web Components, [AlpineJS](https://alpinejs.dev/), "îles" SPAs...)
+- **N'est probablement pas adapté sur les "usines à formulaires"** : validation côté client, interdépendances entre certains inputs, champs de formulaires complexes, etc... peuvent être difficiles à gérer
+- Remet en question nos manières de faire et prône un retour à l'économie : **#use-the-platform**
+
+</v-clicks>
+
 
 ---
 layout: "thank_you"
