@@ -22,8 +22,9 @@ layout: title
 # Qu'est-ce que HTMX ?
 
 <v-clicks>
-  <div class="flex items-center mt-16">
-    <img class="max-w-2/3 border" src="https://htmx.org/img/memes/bellcurve2.png" alt="Bell Curve Meme">
+  <div class="grid grid-cols-2 max-w-4/5 gap-4">
+    <img class="border" src="https://htmx.org/img/memes/bellcurve2.png" alt="Bell Curve Meme">
+    <img class="border" src="https://htmx.org/img/memes/restapi.png" alt="Resftul API Meme">
   </div>
 </v-clicks>
 
@@ -60,7 +61,7 @@ _Exemple :_
 
 <v-clicks>
 
-- **JavaScript s'est installé comme une solution à tous les problèmes** du développement web moderne, y compris ceux qu'il a lui-même créé : _besoin d'interactivité → donc SPA → donc gestion du routing côté client → mais mauvais SEO → donc SSR + hydratation → mais rendu complet à chaque navigation → donc RSC → etc..._
+- **JavaScript s'est installé comme une solution à tous les problèmes** du développement web moderne, y compris ceux qu'il a lui-même créé : _besoin d'interactivité → donc SPA → donc gestion du routing côté client → mais URLs broken et mauvais SEO → donc SSR + hydratation → mais rendu complet à chaque navigation → donc RSC → etc..._
 - **On réécrit tout, tout le temps** : React class components → function components, React Redux → State local, Vue 2 → Vue 3, Ng Observables → Signaux, etc... : _#fatigue_. [La durée moyenne d'une ligne de code est de 2,4 ans](https://pmc.ncbi.nlm.nih.gov/articles/PMC7959608/)
 - **Une séparation s'est créée entre Frontend et Backend**
 - **JSON s'est imposé** comme format de communication entre les deux : non typé, nécessitant une re-validation côté client (zod, GraphQL, etc...) et une documentation tierce (Swagger, OpenAPI, etc...)
@@ -88,7 +89,7 @@ _Exemple :_
 
 - **Hypermedia** : HyperText (texte + liens) + Media (images, vidéos, etc...)
 - Contrainte de base de l'architecture **REST**
-- Principe : un client d'application interragit uniquement avec un serveur via des liens dynamiques fournis par le serveur lui-même. **Les capacités de l'application sont donc auto-découvrables par le client**, sans besoin d'une documentation externe.
+- Principe : un client d'application interragit avec un serveur uniquement via des liens dynamiques fournis par le serveur lui-même. **Les capacités de l'application sont donc auto-découvrables par le client**, sans besoin d'une documentation externe.
 
 </v-clicks>
 
@@ -135,6 +136,8 @@ layout: title
 
 **Déclenche une requête avec le verbe HTTP donné vers l'URL donné.**
 
+<v-click>
+
 _Exemple :_
 
 ```html
@@ -143,15 +146,23 @@ _Exemple :_
 </button>
 ```
 
+</v-click>
+
+<v-click>
+
 _Traduction :_
 
 > "Quand l'utilisateur clique sur le bouton, envoie une requête PUT vers _`/upvote`_."
+
+</v-click>
 
 ---
 
 # Attributs : `hx-trigger="event"`
 
 **Spécifie l'event DOM qui déclenchera la requête définie par `hx-get`, `hx-post`, ...**
+
+<v-click>
 
 _Exemple :_
 
@@ -161,20 +172,33 @@ _Exemple :_
 </button>
 ```
 
+</v-click>
+
+<v-click>
+
 _Traduction :_
 
 > "Quand le curseur de l'utilisateur entre dans le bouton, envoie une requête POST vers _`/analytics`_."
 
+</v-click>
+
 <br />
+
+<v-clicks>
 
 - Des valeurs par défaut sont définies pour chaque élément HTML : `"change"` pour les input et select, `"submit"` pour les formulaires, `"click"` pour tous les autres éléments
 - Des _"modifiers"_ peuvent être spécifiés afin d'affiner le comportement, exemple : `hx-trigger="mouseenter once delay:500ms"`
+
+</v-clicks>
 
 --- 
 
 # Attributs : `hx-target="#selector"`
 
 **Spécifie l'élément du DOM qui sera mis à jour avec la réponse à la requête définie par `hx-get`, `hx-post`, ...** (par défaut, l'élément déclencheur).
+
+
+<v-click>
 
 _Exemple :_
 
@@ -189,15 +213,23 @@ _Exemple :_
 <div id="search-results"></div>
 ```
 
+</v-click>
+
+<v-click>
+
 _Traduction :_
 
 > "500ms après que l'utilisateur ait tapé une lettre dans le champ de recherche, envoie une requête GET vers _`/search`_ et met à jour le contenu de _`#search-results`_ avec la réponse."
+
+</v-click>
 
 ---
 
 # Attributs : `hx-swap="strategy"`
 
 **Spécifie la stratégie de mise à jour de l'élément du DOM avec la réponse à la requête définie par `hx-get`, `hx-post`, ...** (par défaut, `"innerHTML"`).
+
+<v-click>
 
 _Exemple :_
 
@@ -207,13 +239,22 @@ _Exemple :_
 </button>
 ```
 
+</v-click>
+<v-click>
+
 _Traduction :_
 
 > "Quand l'utilisateur clique sur le bouton, envoie une requête PUT vers _`/upvote`_ et remplace le bouton par la réponse."
 
+</v-click>
+
 <br />
 
+<v-clicks>
+
 - Valeurs possibles : `"innerHTML"`, `"outerHTML"`, `"afterbegin"`, `"beforebegin"`, `"afterend"`, `"beforeend"`, `delete`, `"none"`
+
+</v-clicks>
 
 ---
 layout: title
@@ -323,7 +364,7 @@ _Indice : [htmx Out of Band Swaps](https://htmx.org/docs/#oob_swaps)_
 - Implique le choix d'un langage de templating côté serveur : **DX différente en fonction du langage applicatif**
 - N'est pas une alternative à React mais **une autre manière de concevoir des applications web**
 - **Pourra (et devra) être enrichi par du JavaScript** sur les parties nécessitant une forte interactivité (Vanilla, Web Components, [AlpineJS](https://alpinejs.dev/), "îles" SPAs...)
-- **N'est probablement pas adapté sur les "usines à formulaires"** : validation côté client, interdépendances entre certains inputs, champs de formulaires complexes, etc... peuvent être difficiles à gérer
+- **N'est probablement pas adapté sur les "usines à formulaires"** : validation côté client, interdépendances entre certains inputs, champs de formulaires complexes, etc... peuvent être difficiles à gérer (ex : [Gumroad](https://htmx.org/essays/why-gumroad-didnt-choose-htmx/))
 - Remet en question nos manières de faire et prône un retour à l'économie : **#use-the-platform**
 
 </v-clicks>
