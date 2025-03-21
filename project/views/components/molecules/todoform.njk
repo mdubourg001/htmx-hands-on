@@ -1,11 +1,5 @@
 {% macro TodoForm() %}
-  <form
-    class="mt-6"
-    hx-post="/todos" 
-    hx-target="#todos"
-    hx-swap="outerHTML" 
-    hx-on::after-request="this.reset()"
-  >
+  <form class="mt-6">
     <input type="text" name="title" placeholder="Add a new todo" required />
     <button type="submit">Add</button>
   </form>
